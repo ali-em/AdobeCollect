@@ -6,7 +6,7 @@ This app helps downloading AdobeConnect videos in situations like when you can j
 
 ## How to use
 
-1. Download AdobeConnect zip output using method is this [link:](ttps://stackoverflow.com/questions/5179517/how-can-i-export-an-adobe-connect-recording-as-a-video)
+1. Download AdobeConnect zip output using method un this [link](https://stackoverflow.com/questions/5179517/how-can-i-export-an-adobe-connect-recording-as-a-video):
 
    - Log into your Adobe Connect account
    - Click on Meetings > My Meetings

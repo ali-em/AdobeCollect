@@ -43,6 +43,11 @@ This app helps exporting AdobeConnect videos in situations like when you can jus
 
    As soon as you run this command AdobeCollect will start to convert videos using ffmpeg and output will be in `database_session_1/Final.mkv` after some time.
 
+## Sample Result
+
+![preview image](AdobeConnect.jpg "Preview").
+
+
 ## How it works
 
 In the default format of downloaded zip, there is 1 flv for each part, for example: one flv for webcam of teacher, one for shared screens, one for when each microphone opens, etc.

@@ -13,7 +13,7 @@ This app helps exporting AdobeConnect videos in situations like when you can jus
    - Click on the link for the recording
    - Click the “Recordings” link (right-side of screen)
    - Click the link in the “Name” column
-   - Copy the “URL for Viewing” – Example, http://mycompany.adobeconnect.com/ p12345678/
+   - Copy the “URL for Viewing” – Example, http://mycompany.adobeconnect.com/p12345678/
    - Paste it into a new browser tab then add the following to the end of the URL: output/filename.zip?download=zip
    - Your URL should look similar to this example, http://mycompany.adobeconnect.com/p12345678/output/filename.zip?download=zip
    - Unzip the downloaded zip file

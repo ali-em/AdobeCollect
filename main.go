@@ -122,6 +122,7 @@ func main() {
 	var tempCameraVideoPath string
 	var cameraVideoStart int
 	var cameraVideoLength int
+	hasVideo := false
 
 	for i, f := range cameras {
 		fmt.Println(i, f.Path, f.OnlyAudio, f.StartTime, f.EndTime)
@@ -137,19 +138,33 @@ func main() {
 			if err != nil {
 				fmt.Println(err)
 			}
-			continue
+			hasVideo = true
+			break
 		}
+	}
+	if len(tempCameraVideoPath) == 0 {
+		f := cameras[0]
+		tempCameraVideoPath = f.Path
+		cameraVideoStart = f.StartTime
+		cameraVideoLength = f.EndTime - f.StartTime
 	}
 
 	// Merge Student Audios...
-	cmd := "ffmpeg -y -i " + tempCameraVideoPath
-	for _, f := range cameras {
+	var cmd string
+
+	cmd = "ffmpeg -y -i " + tempCameraVideoPath
+
+	for i, f := range cameras {
+		if !hasVideo && i == 0 {
+			continue
+		}
 		if f.OnlyAudio {
 			cmd += " -i " + f.Path
 		}
 	}
 	cmd += " -filter_complex \""
 	for i, f := range cameras {
+
 		if f.OnlyAudio {
 			cmd +=
 				"[" + strconv.Itoa(i) + ":a]adelay=" + strconv.Itoa(f.StartTime) +
@@ -157,21 +172,29 @@ func main() {
 		}
 	}
 
-	cmd += " [0:a]"
+	if hasVideo {
+		cmd += " [0:a]"
+	}
 	for _, f := range cameras {
 		if f.OnlyAudio {
 			cmd += "[" + f.Name + "]"
 		}
 	}
 	joinedAudiosFile := path.Join(folderName, "Camera.mkv")
-	cmd += "amix=" + strconv.Itoa(len(cameras)) + "[a]\" -map 0:v -map \"[a]\"  -c:v copy -preset ultrafast " + joinedAudiosFile
+	cmd += "amix=" + strconv.Itoa(len(cameras)) + "[a]\" "
+	if hasVideo {
+		cmd += " -map 0:v "
+	}
+	cmd += "-map \"[a]\"  -c:v copy -preset ultrafast " + joinedAudiosFile
 
 	fmt.Println(cmd)
 	err = Shellout(cmd)
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		os.Remove(tempCameraVideoPath)
+		if hasVideo {
+			os.Remove(tempCameraVideoPath)
+		}
 	}
 
 	fmt.Println("Screen sharings: ", len(screens))

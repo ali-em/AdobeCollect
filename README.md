@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This app helps downloading AdobeConnect videos in situations like when you can just `watch` the past videos and you can't download it, e.g: University Of Tehran!
+This app helps exporting AdobeConnect videos in situations like when you can just `watch` the past videos and you can't download it, e.g: University Of Tehran!
 
 ## How to use
 

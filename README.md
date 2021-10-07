@@ -28,7 +28,7 @@ This app helps exporting AdobeConnect videos in situations like when you can jus
    apt install ffmpeg
    ```
 
-3. [Download](https://github.com/ali-em/AdobeCollect/releases/download/v0.8/AdobeCollect) and run app:
+3. [Download](https://github.com/ali-em/AdobeCollect/releases/download/v0.8.1/AdobeCollect) and run app:
 
    ```
    ./AdobeCollect <UnzippedfolderPath>
